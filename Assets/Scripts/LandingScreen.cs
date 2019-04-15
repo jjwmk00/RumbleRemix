@@ -52,24 +52,55 @@ public class LandingScreen : MonoBehaviour
         StartCoroutine("LandingScreenManager");                 // Start LandingScreenManager function
     }
 
-    private void StartCoroutine()
-    {
-        throw new NotImplementedException();
-    }
-
     // Update is called once per frame
     void Update()
     {
         
     }
 
+    // Handles the cases for whether the Landing screen fades in or out
+    private IEnumerator LandingScreenManager()
+    {
+        while(true)
+        {
+            switch (_landingScreenController)
+            {
+                case LandingScreenController.LandingScreenFadeIn:
+                    LandingScreenFadeIn();
+                    break;
+                case LandingScreenController.LandingScreenFadeOut:
+                    LandingScreenFadeOut();
+                    break;
+            }
+            yield return null;
+        }
+    }
+
     private void LandingScreenFadeIn()
     {
         Debug.Log("LandingScreenFadeIn");
+
+        _landingScreenAudio.volume += _landingScreenFadeSpeed * Time.deltaTime; // Increase volume by fade speed
+        _landingScreenFadeValue += _landingScreenFadeSpeed * Time.deltaTime;    // Increase fade value by the fade speed 
+        
+        // To make sure we get the precise value of 1
+        if(_landingScreenFadeValue > 1)                                         // If fade value is greater than 1
+        {
+            _landingScreenFadeValue = 1;                                        // Then set fade value to one                   
+        }   
     }
 
     private void LandingScreenFadeOut()
     {
         Debug.Log("LandingScreenFadeOut");
+
+        _landingScreenAudio.volume -= _landingScreenFadeSpeed * Time.deltaTime; // Decrease voulme by fade speed
+        _landingScreenFadeValue -= _landingScreenFadeSpeed * Time.deltaTime;    // Decrease fade value by the fade speed
+
+        // To make sure we get the precise value of 0
+        if(_landingScreenFadeValue < 0)                                         // If the value is less than 0
+        {
+            _landingScreenFadeValue = 0;                                        // Then set the value to 0
+        }
     }
 }
