@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,10 +26,35 @@ public class LandingScreen : MonoBehaviour
         LandingScreenFadeIn = 0,
         LandingScreenFadeOut = 1
     }
+
+    private void Awake()
+    {
+        _landingScreenFadeValue = 0;                            // Fade value equals zero on startup
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Only usable with a gamepad
+        Cursor.visible = false;                                 // Set cursor visible state to false
+        Cursor.lockState = CursorLockMode.Locked;               // Lock the cursor
+
+        // Landing Screen Music
+        _landingScreenAudio = GetComponent<AudioSource>();      // Landing Screen audio equals the audio source
+
+        _landingScreenAudio.volume = 0;                         // Audio volume equals zero on startup
+        _landingScreenAudio.clip = _landingScreenMusic;         // Audio clip equals the splash screen music
+        _landingScreenAudio.loop = true;                        // Set audio to loop 
+        _landingScreenAudio.Play();                             // Play audio
+
+        _landingScreenController = LandingScreen.LandingScreenController.LandingScreenFadeIn; // Fade in on startup
+
+        StartCoroutine("LandingScreenManager");                 // Start LandingScreenManager function
+    }
+
+    private void StartCoroutine()
+    {
+        throw new NotImplementedException();
     }
 
     // Update is called once per frame
