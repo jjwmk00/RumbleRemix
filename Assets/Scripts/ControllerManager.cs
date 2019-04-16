@@ -29,14 +29,28 @@ public class ControllerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_controllerDetected == true)                                        // If controller is detected 
-        {
-            return;                                                             // Do nothing and return
-        }
+       
     }
 
     private void OnGUI()
+
     {
-       
+        // If startup finished is false
+        if (_startUpFinished == false )                                          
+        {
+            return;                                                             // Return and do nothing
+        }
+
+        // If the controller is detected
+        if (_controllerDetected == true)                                         
+        {
+            return;                                                             // Return and do nothing
+        }
+
+        // If the controller is not detected
+        if (_controllerDetected == false)                                        
+        {
+            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), _controllerNotDetected);      
+        }
     }
 }
