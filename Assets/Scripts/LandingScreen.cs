@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Script loads Scene filled with test
+/// to be rendered  on initilization of the game
+/// </summary>
+
 [RequireComponent(typeof(AudioSource))]                         // Add audio source when attaching the script
 public class LandingScreen : MonoBehaviour
 {
