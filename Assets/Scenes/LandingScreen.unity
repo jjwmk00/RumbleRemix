@@ -380,50 +380,82 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &1016833464
-GameObject:
+--- !u!1001 &3039699375882375998
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1016833466}
-  - component: {fileID: 1016833465}
-  m_Layer: 0
-  m_Name: Controller Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1016833465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016833464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb5650ac50aec3f44aaef094853cdd89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controllerNotDetected: {fileID: 0}
-  _ps4Controller: 0
-  _xboxController: 0
-  _controllerDetected: 0
---- !u!4 &1016833466
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016833464}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2436275, y: 3.7114515, z: -6.3503795}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3039699375286236806, guid: eff6e93c3ca324043bb82811b48e8111,
+        type: 3}
+      propertyPath: m_Name
+      value: Controller Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039699375286236804, guid: eff6e93c3ca324043bb82811b48e8111,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.2436275
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039699375286236804, guid: eff6e93c3ca324043bb82811b48e8111,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.7114515
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039699375286236804, guid: eff6e93c3ca324043bb82811b48e8111,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.3503795
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039699375286236804, guid: eff6e93c3ca324043bb82811b48e8111,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039699375286236804, guid: eff6e93c3ca324043bb82811b48e8111,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039699375286236804, guid: eff6e93c3ca324043bb82811b48e8111,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039699375286236804, guid: eff6e93c3ca324043bb82811b48e8111,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039699375286236804, guid: eff6e93c3ca324043bb82811b48e8111,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039699375286236804, guid: eff6e93c3ca324043bb82811b48e8111,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039699375286236804, guid: eff6e93c3ca324043bb82811b48e8111,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039699375286236804, guid: eff6e93c3ca324043bb82811b48e8111,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039699375286236807, guid: eff6e93c3ca324043bb82811b48e8111,
+        type: 3}
+      propertyPath: _controllerNotDetected
+      value: 
+      objectReference: {fileID: 2800000, guid: 18f6929f78afc1047a378402da7e3c25, type: 3}
+    - target: {fileID: 3039699375286236807, guid: eff6e93c3ca324043bb82811b48e8111,
+        type: 3}
+      propertyPath: _ps4Controller
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eff6e93c3ca324043bb82811b48e8111, type: 3}

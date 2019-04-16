@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script detects whether it is an Xbox or PS4 controller
+/// Shows a popup if cannot detect an above controller 
+/// Or none at all
+/// </summary>
+
 public class ControllerManager : MonoBehaviour
 {
     public Texture2D _controllerNotDetected;                                    // Create slot in inspector to assign controller warning text
