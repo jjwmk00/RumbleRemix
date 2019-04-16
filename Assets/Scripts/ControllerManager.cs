@@ -32,6 +32,36 @@ public class ControllerManager : MonoBehaviour
        
     }
 
+    private void LateUpdate()
+    {
+        string[] _joyStickNames = Input.GetJoystickNames();                     // Get joystick names and store them in an array
+
+        for (int _js = 0; _js < _joyStickNames.Length; _js++)                   // Increse counter by one based on the legth of the joystick names array
+        {
+            if (_joyStickNames [_js].Length == 19)                              // If joystick names is equal to 19 then its a PS4 Controller
+            {
+                _ps4Controller = true;                                          // Set PS4 controller to true
+                _controllerDetected = true;                                     // Controller has been detected
+            }
+
+            if (_joyStickNames [_js].Length == 33)                              // If joystic names is equal to 19 then its a Xbox Controller
+            {
+                _xboxController = true;                                         // Set Xbox controller to true
+                _controllerDetected = true;                                     // Controller has been detected
+            }
+
+            if (_joyStickNames [_js].Length != 0)                               // If joystick names are not equal to 0
+            {   
+                return;                                                         // Return and do nothing
+            }
+
+            if (string.IsNullOrEmpty(_joyStickNames [_js]))                     // If sting array is empty then controller is not connected
+            {
+                _controllerDetected = false;                                    // Set controller detected to false
+            }
+        }
+    }
+
     private void OnGUI()
 
     {
