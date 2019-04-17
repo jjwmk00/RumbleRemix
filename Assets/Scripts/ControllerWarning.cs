@@ -14,7 +14,7 @@ public class ControllerWarning : ControllerManager
 
     // Variables for fading items on the warning screen
     public float _controllerWarningFadeValue;                                  // Define the fade value
-    public float _controllerWarningFadeSpeed = 0.45f;                              // Define the fade speed 
+    public float _controllerWarningFadeSpeed = 0.45f;                          // Define the fade speed 
 
     private bool _controllerConditionsMet;                                     // Define if the controller conditions are met for game to continue
 
@@ -41,7 +41,19 @@ public class ControllerWarning : ControllerManager
         if (_controllerConditionsMet == true)                                   // If the controller conditions have been met
         {
             _controllerWarningFadeValue -= 
-                _controllerWarningFadeSpeed * Time.deltaTime; // Decrease Fade    
+                _controllerWarningFadeSpeed * Time.deltaTime;                   // Decrease Fade value
+        }
+
+        // So we don't get a negative number
+        if (_controllerWarningFadeValue < 0)                                    // If the fade value is less than 0
+        {
+            _controllerWarningFadeValue = 0;                                    // Set it to equal 0
+        }
+
+        if (_controllerWarningFadeValue == 0)                                   // If the fade value is equal to zero 
+        {
+            _startUpFinished = true;                                            // Startup has been finished
+            SceneManager.LoadScene("MainMenu");                                 // Load the next scene
         }
     }
 
