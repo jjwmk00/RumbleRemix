@@ -7,6 +7,32 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
 
+    public int _selectedButton = 0;                                                         // Defines selected GUI button
+    public float _timeBetweenPress = 0.1f;                                                  // Delay inbetween button presses
+    public float _timeDelay;
+
+    public float _mainMenuInputTimer;                                                       // Defines the input time for the main menu
+    public float _mainMenuInputDelay;                                                       // Defines the input delay for the main menu
+
+    public Texture2D _mainMenuBackground;                                                   // Creates a slot in the inspector to assign main menu background
+
+    private AudioSource _mainMenuAudio;                                                     // Naming for main menu audio component
+    public AudioClip _mainMenuMusic;                                                        // Creates slot in the inpector to assign main menu music
+    public AudioClip _mainMenuStartButtonAudio;                                             // Creates slot in the inspector to assign start button audio
+    public AudioClip _mainMenuQuitButtonAudio;                                              // Creates slot in the inspector to assign quit button audio
+
+    private float _mainMenuFadeValue;                                                       // Define the value of main menu fade
+    private float _mainMenuFadeSpeed = 0.15f;                                               // Define the speed at which the main menu fades
+
+    public float _mainMenuButtonWidth = 100f;                                               // Defines the main menu button height
+    public float _mainMenuButtonHeight = 100f;                                              // Defines the main manu button width 
+    public float _mainMenuGUIOffset = 10f;                                                  // Defines the main menu offset
+
+    private bool _startingSinglePlayer;                                                     // Check if playing single player mode
+    private bool _startingVersus;                                                           // Check if starting versus mode
+    private bool _quitGame;                                                                 // Check if quitting game
+
+
     private bool _ps4Controller;                                                            // Bool for if a PS4 controller is connected 
     private bool _xboxController;                                                           // Bool for if a Xbox controller is connected
 

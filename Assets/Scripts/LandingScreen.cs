@@ -27,7 +27,7 @@ public class LandingScreen : MonoBehaviour
 
     private LandingScreenController _landingScreenController;   // Defines the naming conventions for the splash screen contollers
 
-    // Defines the states for the splash screens
+    // Defines the states for the landing screen
     private enum LandingScreenController
     {
         LandingScreenFadeIn = 0,
