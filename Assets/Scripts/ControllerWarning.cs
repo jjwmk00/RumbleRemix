@@ -14,9 +14,10 @@ public class ControllerWarning : ControllerManager
 
     // Variables for fading items on the warning screen
     public float _controllerWarningFadeValue;                                  // Define the fade value
-    public float _controllerWarningFadeSpeed = 0.45f;                          // Define the fade speed 
+    public float _controllerWarningFadeSpeed = .15f;                           // Define the fade speed 
 
-    private bool _controllerConditionsMet;                                     // Define if the controller conditions are met for game to continue
+    // Define if the controller conditions are met for game to continue
+    private bool _controllerConditionsMet;                                     
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,7 @@ public class ControllerWarning : ControllerManager
     {
         if (_controllerDetected == true)                                        // If the controller has been detected
         {
-            StartCoroutine("WaitForMenuToLoad");
+            StartCoroutine("WaitForMainMenuToLoad");
         }
 
         if (_controllerConditionsMet == false)                                  // If the controller conditions have not been met
@@ -59,8 +60,34 @@ public class ControllerWarning : ControllerManager
 
     private IEnumerator WaitForMainMenuToLoad()
     {
-        yield return new WaitForSeconds(4);                                      // Wait for this many seconds 
+        yield return new WaitForSeconds(2);                                      // Wait for this many seconds 
 
         _controllerConditionsMet = true;                                         // Controller conditions have been met
     }
+
+    private void OnGUI()
+    {
+        
+        // Draws the background based on screen height and width
+        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), _controllerWarningBackround);
+        
+        // Sets the color to Black (RGB)  with the alpha as the fade value
+        GUI.color = new Color(1, 1, 1, _controllerWarningFadeValue);
+
+        // If the controller hasnt been detected 
+        if (_controllerDetected == false)
+        {
+            // Draws the warning text based on the screen height and width
+            GUI.DrawTexture(new Rect((Screen.width / 4), (Screen.height / 4), (Screen.width / 2), (Screen.height / 2)), _controllerWarningText, ScaleMode.ScaleToFit);
+
+        }
+
+        // If a controller has been detcted
+        if (_controllerDetected == true)
+        {
+            // Draw the controller detected text based on the screen width and height
+            GUI.DrawTexture(new Rect((Screen.width/3), (Screen.height/4), (Screen.width/3), (Screen.height/8)), _controllerDetectedText);
+        }
+    }
+
 }

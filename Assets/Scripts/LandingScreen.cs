@@ -23,7 +23,7 @@ public class LandingScreen : MonoBehaviour
 
     // Variables for fading items on the landing screen
     private float _landingScreenFadeValue;                      // Defines the fade value
-    private float _landingScreenFadeSpeed = 0.15f;              // Defines the fade speed
+    private float _landingScreenFadeSpeed = 0.35f;              // Defines the fade speed
 
     private LandingScreenController _landingScreenController;   // Defines the naming conventions for the splash screen contollers
 
@@ -131,9 +131,9 @@ public class LandingScreen : MonoBehaviour
         GUI.color = new Color(1, 1, 1, _landingScreenFadeValue);                // GUI color is equal to black transparency is the screen fade value
 
         // Draws the Title
-        GUI.DrawTexture(new Rect((Screen.width/4), (Screen.height/3), (Screen.width / 2), (Screen.height / 5)), _landingScreenTitleText);
+        GUI.DrawTexture(new Rect((Screen.width/4), (Screen.height/3), (Screen.width / 2), (Screen.height / 5)), _landingScreenTitleText, ScaleMode.ScaleToFit);
 
         // Draws the sub text
-        GUI.DrawTexture(new Rect(0, 0, (Screen.width/8), (Screen.height/11)), _landingScreenSubText);
+        GUI.DrawTexture(new Rect(0, 0, (Screen.width / 8), (Screen.height / 11)), _landingScreenSubText, ScaleMode.ScaleToFit);
     }
 }
