@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
 
+    private bool _ps4Controller;                                                            // Bool for if a PS4 controller is connected 
+    private bool _xboxController;                                                           // Bool for if a Xbox controller is connected
+
     private string[] _mainMenuButtons = new string[]                                        // Create an array of main menu buttons
     {
         "_singlePlayer",
@@ -27,13 +30,39 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _ps4Controller = false;                                                             // PS4 controller is false on load
+        _xboxController = false;                                                            // Xbox controller is false on load
+
+        _mainMenuController = MainMenu.MainMenuController.MainMenuFadeIn;                   // State equals fade in on load
+
+        StartCoroutine("MainMenuManager");                                                  // Start Main Menu manager on load
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private IEnumerator MainMenuManager()
+    {
+        while(true)
+        {
+            switch( _mainMenuController)
+            {
+                case MainMenuController.MainMenuFadeIn:
+                    MainMenuFadeIn();
+                    break;
+                case MainMenuController.MainMenuIdle:
+                    MainMenuIdle();
+                    break;
+                case MainMenuController.MainMenuFadeOut:
+                    MainMenuFadeOut();
+                    break;
+            }
+
+            yield return null;
+        }
     }
 
 
