@@ -14,7 +14,7 @@ public class ControllerWarning : ControllerManager
 
     // Variables for fading items on the warning screen
     public float _controllerWarningFadeValue;                                  // Define the fade value
-    public float _landingScreenFadeSpeed = 0.45f;                              // Define the fade speed 
+    public float _controllerWarningFadeSpeed = 0.45f;                              // Define the fade speed 
 
     private bool _controllerConditionsMet;                                     // Define if the controller conditions are met for game to continue
 
@@ -28,6 +28,27 @@ public class ControllerWarning : ControllerManager
     // Update is called once per frame
     void Update()
     {
-        
+        if (_controllerDetected == true)                                        // If the controller has been detected
+        {
+            StartCoroutine("WaitForMenuToLoad");
+        }
+
+        if (_controllerConditionsMet == false)                                  // If the controller conditions have not been met
+        {
+            return;                                                             // Return and do nothing 
+        }
+
+        if (_controllerConditionsMet == true)                                   // If the controller conditions have been met
+        {
+            _controllerWarningFadeValue -= 
+                _controllerWarningFadeSpeed * Time.deltaTime; // Decrease Fade    
+        }
+    }
+
+    private IEnumerator WaitForMainMenuToLoad()
+    {
+        yield return new WaitForSeconds(4);                                      // Wait for this many seconds 
+
+        _controllerConditionsMet = true;                                         // Controller conditions have been met
     }
 }
