@@ -107,25 +107,62 @@ public class MainMenu : MonoBehaviour
     private void MainMenuFadeIn()
     {
         Debug.Log("MainMenuFadeIn");
-    }
 
-    private void MainMenuIdle()
-    {
-        Debug.Log("Main Menu is Idle");
+        _mainMenuAudio.volume += _mainMenuFadeSpeed * Time.deltaTime;                               // Increase the volume by the fade speed
+
+        _mainMenuFadeValue += _mainMenuFadeSpeed * Time.deltaTime;                                  // Increase fade value by the fade speed
+
+        // So we get 1 as the fade value 
+        if (_mainMenuFadeValue > 1)                                                                 // If the fade value is greater than 1
+        {
+            _mainMenuFadeValue = 1;                                                                 // Set the value to 1
+        }
+
+        if (_mainMenuFadeValue == 1)                                                                // If the fade value is equal to 1
+        {
+            _mainMenuController = MainMenu.MainMenuController.MainMenuIdle;                         // Then make the sate idle
+        }
     }
 
     private void MainMenuFadeOut()
     {
         Debug.Log("MainMenuFadeOut");
+
+        _mainMenuAudio.volume -= _mainMenuFadeSpeed * Time.deltaTime;                               // Decrease the volume by the fade speed 
+
+        _mainMenuFadeValue -= _mainMenuFadeSpeed * Time.deltaTime;                                  // Decrease the fade value by the fade speed
+        
+        // So we get 0 as the fade value
+        if (_mainMenuFadeValue < 0)                                                                 // If the fade value is less than 0
+        {
+            _mainMenuFadeValue = 0;                                                                 // Set it to zero
+        }
+
+        // Starting single player mode
+        if (_mainMenuFadeValue == 0 && _startingSinglePlayer == true)                               // If the fade value is 0 and starting single player mode
+        {
+            SceneManager.LoadScene("CharacterSelect");                                              // Load the character select screen
+        }
+
+
     }
 
-    //private void MainMenuButtonPress()
-    //{
-    //    Debug.Log("Menu button has been pressed");
-    //}
+    private void MainMenuIdle()
+    {
+        Debug.Log("Main Menu is Idle");
+
+        if (_startingSinglePlayer || _quitGame == true)                                             // If starting single player game or quitting game
+        {
+            _mainMenuController = MainMenu.MainMenuController.MainMenuFadeOut;                      // Make the state fade out
+        }
+    }
+
+    
 
     private void MainMenuButtonPress()
     {
+        Debug.Log("Main Menu Button has been pressed.");
+
         GUI.FocusControl(_mainMenuButtons[_selectedButton]);
 
         switch(_selectedButton)
