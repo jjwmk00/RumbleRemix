@@ -56,8 +56,20 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _startingSinglePlayer = false;                                                      // Not starting singleplayer on start
+        _startingVersus = false;                                                            // Not starting versus on start
+        _quitGame = false;                                                                  // Not quitting game on start
+
         _ps4Controller = false;                                                             // PS4 controller is false on load
         _xboxController = false;                                                            // Xbox controller is false on load
+
+        _mainMenuFadeValue = 0;                                                             // Set main menu value to 0
+
+        _mainMenuAudio = GetComponent<AudioSource>();                                       // Get the main menu audio source
+        _mainMenuAudio.volume = 0;                                                          // Set the main menu volume to 0 
+        _mainMenuAudio.clip = _mainMenuMusic;                                               // Set the audio clip to be the main menu music
+        _mainMenuAudio.loop = true;                                                         // Loop over the music clip w/o fade
+        _mainMenuAudio.Play();                                                              // Play the main menu music
 
         _mainMenuController = MainMenu.MainMenuController.MainMenuFadeIn;                   // State equals fade in on load
 
@@ -107,9 +119,33 @@ public class MainMenu : MonoBehaviour
         Debug.Log("MainMenuFadeOut");
     }
 
+    //private void MainMenuButtonPress()
+    //{
+    //    Debug.Log("Menu button has been pressed");
+    //}
+
     private void MainMenuButtonPress()
     {
-        Debug.Log("Menu button has been pressed");
+        GUI.FocusControl(_mainMenuButtons[_selectedButton]);
+
+        switch(_selectedButton)
+        {
+            // Single Player
+            case 0:
+                _mainMenuAudio.PlayOneShot(_mainMenuStartButtonAudio);                             // Play button audio clip
+                _startingSinglePlayer = true;                                                      // Starting Single Player mode
+                break;
+            // Versus
+            case 1:
+                _mainMenuAudio.PlayOneShot(_mainMenuStartButtonAudio);                             // Play button audio clip
+                _startingVersus = true;                                                            // Start Versus mode
+                break;
+            // Quit Game
+            case 2:
+                _mainMenuAudio.PlayOneShot(_mainMenuQuitButtonAudio);                              // Play button audio clip
+                _quitGame = true;                                                                  // Quit Game
+                break;
+        }
     }
 }
 
