@@ -9,7 +9,7 @@
 [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
-
+[Aa]ssets/Editor
 # Never ignore Asset meta data
 ![Aa]ssets/**/*.meta
 

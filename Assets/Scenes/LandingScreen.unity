@@ -314,7 +314,7 @@ MonoBehaviour:
     type: 3}
   _landingScreenSubText: {fileID: 2800000, guid: 55008027b835eec4db111f3d00220149,
     type: 3}
-  _landingScreenMusic: {fileID: 0}
+  _landingScreenMusic: {fileID: 8300000, guid: c17faa0924d7f08428eeeb6b01a04b24, type: 3}
 --- !u!82 &534669907
 AudioSource:
   m_ObjectHideFlags: 0

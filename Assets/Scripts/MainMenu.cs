@@ -79,7 +79,29 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        string[]_joyStickNames = Input.GetJoystickNames();                                  // Storing joystick names in a string array 
+
+        for(int _js = 0; _js < _joyStickNames.Length; _js ++)                               // Loop over the length of joystick names array
+        {
+            if (_joyStickNames[_js].Length == 0)                                            // If empty or no controller connected
+            {
+                return;                                                                     // Return and do nothing
+            }
+
+            if (_joyStickNames[_js].Length == 19)                                           // If its a PS4 controller
+            {
+                Debug.Log("PS4 Controller Connected");
+
+                _ps4Controller = true;                                                      // Set PS4 controller
+            }
+
+            if (_joyStickNames[_js].Length == 33)                                           // If its a Xbox controller 
+            {
+                Debug.Log("Xbox Controller Connected");
+
+                _xboxController = true;                                                     // Set Xbox controller to true
+            }
+        }
     }
 
     private IEnumerator MainMenuManager()
@@ -163,7 +185,7 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Main Menu Button has been pressed.");
 
-        GUI.FocusControl(_mainMenuButtons[_selectedButton]);
+        GUI.FocusControl(_mainMenuButtons[_selectedButton]);                                       // Focus on the selected GUI button
 
         switch(_selectedButton)
         {
@@ -183,6 +205,15 @@ public class MainMenu : MonoBehaviour
                 _quitGame = true;                                                                  // Quit Game
                 break;
         }
+    }
+
+    private void OnGUI()
+    {
+        // Draw the background texture by the width and height of the screen
+        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), _mainMenuBackground);
+
+        // GUI color is equal to black transparency is the screen fade value
+        GUI.color = new Color(1, 1, 1, _mainMenuFadeValue);
     }
 }
 

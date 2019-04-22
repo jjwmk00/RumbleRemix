@@ -128,7 +128,8 @@ public class LandingScreen : MonoBehaviour
         // Draws the background
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), _landingScreenBackground);
 
-        GUI.color = new Color(1, 1, 1, _landingScreenFadeValue);                // GUI color is equal to black transparency is the screen fade value
+        // GUI color is equal to black transparency is the screen fade value
+        GUI.color = new Color(1, 1, 1, _landingScreenFadeValue);                
 
         // Draws the Title
         GUI.DrawTexture(new Rect((Screen.width/4), (Screen.height/3), (Screen.width / 2), (Screen.height / 5)), _landingScreenTitleText, ScaleMode.ScaleToFit);
