@@ -79,6 +79,8 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // Detecting what kind of controller is connected
         string[]_joyStickNames = Input.GetJoystickNames();                                  // Storing joystick names in a string array 
 
         for(int _js = 0; _js < _joyStickNames.Length; _js ++)                               // Loop over the length of joystick names array
@@ -102,6 +104,71 @@ public class MainMenu : MonoBehaviour
                 _xboxController = true;                                                     // Set Xbox controller to true
             }
         }
+
+
+
+        // Create a delay between button presses
+        if (_mainMenuInputTimer > 0)                                                        // If the input timer is greater than 0
+        {    
+            _mainMenuInputTimer -= 1f * Time.deltaTime;                                     // Decrease the timer 
+        }
+
+
+
+        // To stay in the range of each of the buttons
+        // Can not move farther up than this button
+        // SINGLE PLAYER BUTTON
+        if (Input.GetAxis("Vertical") > 0f && _selectedButton == 0)                         // If input equals vertical(positive or up) and the selected button equals SINGLE PLAYER
+        {
+            return;                                                                         // Retrun and do nothing
+        }
+
+        
+        // MOVING UP THE MENU
+        // From VERSUS to SINGLE PLAYER
+        if (Input.GetAxis("Vertical") > 0f && _selectedButton == 1)                         // If input equals vertical(positive or up) and the selected button equals VERSUS
+        {
+            // If the delay is in effect
+            if(_mainMenuInputTimer > 0)                                                     // If the input timer is greater than 0
+            {
+                return;
+            }
+
+            // ELSE
+
+            // Reset the delay
+            _mainMenuInputTimer = _mainMenuInputDelay;                                      // Set the input timer equal to the input delay
+
+            // Moved to the next button
+            _selectedButton = 0;                                                            // Set selected button equal to the Single Player button
+            }
+
+        // From QUIT to VERSUS
+        if (Input.GetAxis("Vertical") > 0f && _selectedButton == 2)                         // If the input equals vertical(postitive or up) and the selected button equals QUIT
+        {
+            // If the delay is in effect
+            if(_mainMenuInputTimer > 0)                                                     // If the input timer is greater than 0
+            {
+                return;
+            }
+
+            // ELSE
+
+            // Reset the delay
+            _mainMenuInputTimer = _mainMenuInputDelay;                                      // Set the input timer equal to the input delay
+
+            // Moved to the next button
+            _selectedButton = 1;                                                            // Set the selected button equal to the Vesus button
+        }
+
+
+        // QUIT BUTTON
+        if (Input.GetAxis("Vertical") < 0f && _selectedButton == 2)                         // If input equals vertical(negative or down) and the selected button equals QUIT
+        {
+            return;                                                                         // Return and do nothing
+        }
+
+
     }
 
     private IEnumerator MainMenuManager()
