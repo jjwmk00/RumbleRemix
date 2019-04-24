@@ -354,7 +354,7 @@ public class MainMenu : MonoBehaviour
 
         // Create the button
         if (GUI.Button(new Rect(
-            0, 0,                                                                                   // X & Y position
+            0, _mainMenuButtonHeight + _mainMenuGUIOffset,                                          // X & Y position
             _mainMenuButtonWidth,                                                                   // Width
             _mainMenuButtonHeight),                                                                 // Height
             "Versus"))                                                                              // Button name
@@ -369,7 +369,7 @@ public class MainMenu : MonoBehaviour
 
         // Create the button
         if (GUI.Button(new Rect(
-            0, 0,                                                                                   // X & Y position
+            0, _mainMenuButtonHeight * 2 + _mainMenuGUIOffset,                                      // X & Y position
             _mainMenuButtonWidth,                                                                   // Width
             _mainMenuButtonHeight),                                                                 // Height
             "Quit"))                                                                                // Button name
