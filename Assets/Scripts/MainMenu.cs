@@ -326,15 +326,33 @@ public class MainMenu : MonoBehaviour
 
         // Draw the button group
         GUI.BeginGroup(new Rect(
-            Screen.width / 2 - _mainMenuButtonWidth / 2, Screen.height / 1.5f,
-            _mainMenuButtonWidth,
-            _mainMenuButtonHeight * 3 + _mainMenuGUIOffset
+            Screen.width / 2 - _mainMenuButtonWidth / 2,                                           // X position
+            Screen.height / 1.5f,                                                                  // Y position
+            _mainMenuButtonWidth,                                                                  // Width
+            _mainMenuButtonHeight * 3 + _mainMenuGUIOffset                                         // Height
             ));
 
+        
+        // SINGLE PLAYER
+        // Set a string to a GUI button
+        GUI.SetNextControlName("_singlePlayer");
+        // Create the single player button
+        if (GUI.Button(new Rect(
+            0, 0,                                                                                  // X & Y positon
+            _mainMenuButtonWidth,                                                                  // Width
+            _mainMenuButtonHeight),                                                                // Height
+            "Single Player")){                                                                     // Name
+            _selectedButton = 0;                                                                   // Selected button equals 0(Single Player)
+            MainMenuButtonPress();                                                                 // Call button press function
+        }
 
+        // Set a string
+       
 
+        // End button group
         GUI.EndGroup();
 
+        // Focus control over the buttons if a controller is connected
         if(_ps4Controller == true || _xboxController == true)                                       // If a PS4 controller or an Xbox controller
         {
             GUI.FocusControl(_mainMenuButtons[_selectedButton]);                                    // Focus equals main menu selected button
