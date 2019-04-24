@@ -342,7 +342,7 @@ public class MainMenu : MonoBehaviour
             0, 0,                                                                                  // X & Y positon
             _mainMenuButtonWidth,                                                                  // Width
             _mainMenuButtonHeight),                                                                // Height
-            "Single Player"))                                                                      // Name
+            "Single Player"))                                                                      // Button name
         { 
             _selectedButton = 0;                                                                   // Selected button equals 0(Single Player)
             MainMenuButtonPress();                                                                 // Call button press function
@@ -357,9 +357,24 @@ public class MainMenu : MonoBehaviour
             0, 0,                                                                                   // X & Y position
             _mainMenuButtonWidth,                                                                   // Width
             _mainMenuButtonHeight),                                                                 // Height
-            "Versus"))                                                                              // Name
+            "Versus"))                                                                              // Button name
         {
             _selectedButton = 1;                                                                    // Selected button equals 1(Versus)
+            MainMenuButtonPress();                                                                  // Call button press function
+        }
+
+        // CREATING QUIT BUTTON
+        // Set a string to a GUI button
+        GUI.SetNextControlName("_quit");
+
+        // Create the button
+        if (GUI.Button(new Rect(
+            0, 0,                                                                                   // X & Y position
+            _mainMenuButtonWidth,                                                                   // Width
+            _mainMenuButtonHeight),                                                                 // Height
+            "Quit"))                                                                                // Button name
+        {
+            _selectedButton = 2;                                                                    // Selected button equals 2(Quit)
             MainMenuButtonPress();                                                                  // Call button press function
         }
        
