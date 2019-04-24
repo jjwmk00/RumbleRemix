@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     public float _timeDelay;
 
     public float _mainMenuInputTimer;                                                       // Defines the input time for the main menu
-    public float _mainMenuInputDelay;                                                       // Defines the input delay for the main menu
+    public float _mainMenuInputDelay = 0.4f;                                                       // Defines the input delay for the main menu
 
     public Texture2D _mainMenuBackground;                                                   // Creates a slot in the inspector to assign main menu background
 
@@ -311,11 +311,34 @@ public class MainMenu : MonoBehaviour
 
     private void OnGUI()
     {
+
+        if(Time.deltaTime >= _timeDelay && (Input.GetButton("Fire1")))                             // If time is greater than or equal to time delay AND equals "Fire1"
+        {
+            StartCoroutine("MainMenuButtonPress");                                                 // Start button press function
+            _timeDelay = Time.deltaTime + _timeBetweenPress;                                       // Make time delay equal current time + time btw button presses
+        }
+        
         // Draw the background texture by the width and height of the screen
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), _mainMenuBackground);
 
         // GUI color is equal to black transparency is the screen fade value
         GUI.color = new Color(1, 1, 1, _mainMenuFadeValue);
+
+        // Draw the button group
+        GUI.BeginGroup(new Rect(
+            Screen.width / 2 - _mainMenuButtonWidth / 2, Screen.height / 1.5f,
+            _mainMenuButtonWidth,
+            _mainMenuButtonHeight * 3 + _mainMenuGUIOffset
+            ));
+
+
+
+        GUI.EndGroup();
+
+        if(_ps4Controller == true || _xboxController == true)                                       // If a PS4 controller or an Xbox controller
+        {
+            GUI.FocusControl(_mainMenuButtons[_selectedButton]);                                    // Focus equals main menu selected button
+        }
     }
 }
 
