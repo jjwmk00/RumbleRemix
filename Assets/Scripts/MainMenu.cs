@@ -333,20 +333,35 @@ public class MainMenu : MonoBehaviour
             ));
 
         
-        // SINGLE PLAYER
+        // CREATING SINGLE PLAYER BUTTON
         // Set a string to a GUI button
         GUI.SetNextControlName("_singlePlayer");
-        // Create the single player button
+
+        // Create the button
         if (GUI.Button(new Rect(
             0, 0,                                                                                  // X & Y positon
             _mainMenuButtonWidth,                                                                  // Width
             _mainMenuButtonHeight),                                                                // Height
-            "Single Player")){                                                                     // Name
+            "Single Player"))                                                                      // Name
+        { 
             _selectedButton = 0;                                                                   // Selected button equals 0(Single Player)
             MainMenuButtonPress();                                                                 // Call button press function
         }
 
-        // Set a string
+        // CREATING VERSUS BUTTON
+        // Set a string to a GUI button
+        GUI.SetNextControlName("_versus");
+
+        // Create the button
+        if (GUI.Button(new Rect(
+            0, 0,                                                                                   // X & Y position
+            _mainMenuButtonWidth,                                                                   // Width
+            _mainMenuButtonHeight),                                                                 // Height
+            "Versus"))                                                                              // Name
+        {
+            _selectedButton = 1;                                                                    // Selected button equals 1(Versus)
+            MainMenuButtonPress();                                                                  // Call button press function
+        }
        
 
         // End button group
