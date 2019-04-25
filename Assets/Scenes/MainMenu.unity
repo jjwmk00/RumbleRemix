@@ -311,11 +311,13 @@ MonoBehaviour:
   _timeBetweenPress: 0.1
   _timeDelay: 0
   _mainMenuInputTimer: 0
-  _mainMenuInputDelay: 0
+  _mainMenuInputDelay: 0.4
   _mainMenuBackground: {fileID: 2800000, guid: dd10dcd9adc5c7b4fbe85fdaeba94abc, type: 3}
   _mainMenuMusic: {fileID: 8300000, guid: c17faa0924d7f08428eeeb6b01a04b24, type: 3}
-  _mainMenuStartButtonAudio: {fileID: 0}
-  _mainMenuQuitButtonAudio: {fileID: 0}
+  _mainMenuStartButtonAudio: {fileID: 8300000, guid: c17faa0924d7f08428eeeb6b01a04b24,
+    type: 3}
+  _mainMenuQuitButtonAudio: {fileID: 8300000, guid: c17faa0924d7f08428eeeb6b01a04b24,
+    type: 3}
   _mainMenuButtonWidth: 100
   _mainMenuButtonHeight: 100
   _mainMenuGUIOffset: 10
